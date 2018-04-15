@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 test test  cyf
 ssh test   cyf
 other test cyf
 test test test cyf
 XueLing test
 XueLing test again
+XueLing test the third time.
+=======
+test test  cyf
+ssh test   cyf
+other test cyf
+test test test cyf
+XueLing test
+>>>>>>> 988548a5d900c629a83793ab3b752f95809dd7d6
