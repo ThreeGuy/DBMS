@@ -1,4 +1,5 @@
 //program by yueyuan 2010.12.15
+
 var datapage = "http://localhost/mytrain/traindata.php?"
 
 var list_fromcity = 0;
@@ -26,7 +27,7 @@ var buy_Price;
 function addbuyaction(){
 	$(".buyTicketInfo").click(function(){
 					if(now_UID == ""){
-						alert("µÇÂ¼Ö®ºó²ÅÄÜ¹ºÂò³µÆ±");
+						alert("ï¿½ï¿½Â¼Ö®ï¿½ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½Æ±");
 					}
 					else
 					{
@@ -61,12 +62,12 @@ $(document).ready(function(){
 	$("#page_Home").fadeIn(ani_speed);
 	now_page = "Home";
  	
-	//±êÌâÀ¸µã»÷ÇÐ»»Ò³Ãæ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½Ò³ï¿½ï¿½
 	$(".nav_li").click(function(){
 		show_page = $(this).attr("page");
 		if(show_page == "User"){
 			if(now_UID == ""){
-				alert("µÇÂ¼Ö®ºó²ÅÄÜ²é¿´ÕË»§ÐÅÏ¢");
+				alert("ï¿½ï¿½Â¼Ö®ï¿½ï¿½ï¿½ï¿½Ü²é¿´ï¿½Ë»ï¿½ï¿½ï¿½Ï¢");
 			}
 			else
 			{
@@ -111,7 +112,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$("#trainList").load(datapage + "action=list&start=±±¾©&end=Ö£ÖÝ",function(){
+	$("#trainList").load(datapage + "action=list&start=ï¿½ï¿½ï¿½ï¿½&end=Ö£ï¿½ï¿½",function(){
 			
 			addbuyaction();
 		
@@ -120,7 +121,7 @@ $(document).ready(function(){
 			});
 	});
 	
-	//²éÑ¯ÁÐ³µ
+	//ï¿½ï¿½Ñ¯ï¿½Ð³ï¿½
 	$("#searchTrain").click(function(){
 		$("#trainList").fadeOut(ani_speed,function(){
 			$("#trainList").load(datapage + "action=list&start=" + $("#fromCity").attr("value") + "&end=" + $("#toCity").attr("value"),function(){
@@ -138,7 +139,7 @@ $(document).ready(function(){
 		});
 	});
 	
-	//³µÕ¾ÐÅÏ¢
+	//ï¿½ï¿½Õ¾ï¿½ï¿½Ï¢
 	$("#searchStation").click(function(){
 		$("#stationTrainList").fadeOut(ani_speed,function(){
 			$("#stationTrainList").load(datapage + "action=station&station=" + $("#getStation").attr("value"),function(){
@@ -155,7 +156,7 @@ $(document).ready(function(){
 		
 	});
 
-	//ÁÐ³µÐÅÏ¢
+	//ï¿½Ð³ï¿½ï¿½ï¿½Ï¢
 	$("#searchTrainNum").click(function(){
 		$("#trainNumList").fadeOut(ani_speed,function(){
 			$("#trainNumList").load(datapage + "action=train&trainnum=" + $("#trainNum").attr("value"),function(){
@@ -186,7 +187,7 @@ $(document).ready(function(){
 	
 	$("#userLogin").click(function(){
 		$("#loginfo").load(datapage + "action=login&username=" + $("#username").attr("value") + "&password=" + $("#password").attr("value"),function(){
-				if($("#nowUserInfo").attr("UID") != ""){ //µÇÂ¼³É¹¦
+				if($("#nowUserInfo").attr("UID") != ""){ //ï¿½ï¿½Â¼ï¿½É¹ï¿½
 					
 					now_UID = $("#nowUserInfo").attr("UID");
 					now_Username = $("#nowUserInfo").attr("username");
@@ -210,7 +211,7 @@ $(document).ready(function(){
 
 	$("#userReg").click(function(){
 		if($("#reg_username").attr("value") == ""){
-			alert("ÓÃ»§Ãû²»ÄÜÎª¿Õ");
+			alert("ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½");
 		}
 		else
 		{
@@ -232,7 +233,7 @@ $(document).ready(function(){
 	$("#buyNewTicket").click(function(){
 		
 			if($("#buyNumber").attr("value") == 0){
-				alert("²»ÄÜÂò0ÕÅ");
+				alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½");
 			}
 			else
 			{

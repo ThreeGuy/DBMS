@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+  <title>火车售票管理系统</title>
+  <link href="lib/mytrain.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="lib/bootstrap.min.css">
+  <script type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="lib/mytrain.js"></script>
+  </head>
+  <body>
+    <div class="store_head">
+      <div id="head_top" class="top">
+          <div class="logo"><a href="#"><img src="image/logo.png" width="500" height="60" border="0"></a></div>
+          <!--<div class="store_tel"><img src="image/top.jpg" /></div>-->
+      </div>
+      <!--<div class="flower">&nbsp;</div>-->
+      <div class="header navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <!--<div class="navbar-header">-->
+            <!--&lt;!&ndash;<div class="logo"><a href="#"><img src="image/logo.png" width="500" height="60" border="0"></a></div>&ndash;&gt;-->
+          <!--</div>-->
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <!--<li id="ShowHome" class="nav_li" page="Home"><a href="#"><img src="image/nav_index.gif" height="29" border="0"></a></li>-->
+              <!--<li class="line">&nbsp;</li>-->
+              <!--<li id="ShowList" class="nav_li" page="List"><a href="#"><img src="image/nav_2.gif"  height="29"></a></li>-->
+              <!--<li class="line">&nbsp;</li>-->
+              <!--<li id="ShowStation" class="nav_li" page="Station"><a href="#"><img src="image/nav_3.gif" ="101" height="29"></a></li>-->
+              <!--<li class="line">&nbsp;</li>-->
+              <!--<li id="ShowTrain" class="nav_li" page="Train"><a href="#"><img src="image/nav_4.gif"  height="29"></a></li>-->
+              <!--<li class="line">&nbsp;</li>-->
+              <!--<li id="ShowUser" class="nav_li" page="User"><a href="#"><img src="image/nav_5.gif"  height="29" border="0"></a></li>-->
+              <!--<li class="line">&nbsp;</li>-->
+              <!--<li id="ShowManage" class="nav_li" page="Manage"><a href="#"><img src="image/nav_6.gif"  height="29" border="0"></a></li>-->
+              <!--<li class="line">&nbsp;</li>-->
+              <li id="ShowHome" class="nav_li" page="Home"><a href="#">首页</a></li>
+              <li id="ShowList" class="nav_li" page="List"><a href="#">查询列车</a></li>
+              <li id="ShowStation" class="nav_li" page="Station"><a href="#">站点信息</a></li>
+              <li id="ShowTrain" class="nav_li" page="Train"><a href="#">车次信息</a></li>
+              <li id="ShowUser" class="nav_li" page="User"><a href="#">我的账户</a></li>
+              <li id="ShowManage" class="nav_li" page="Manage"><a href="#">系统管理</a></li>
+            </ul>
+          </div>
+        </div>
+        <div id="ShortMenu" class="store_affiliate_menu">
+          <div id="unLogin"><a id="showRegWindow">注册</a> | <a id="showLoginWindow">登录</a></div>
+          <div id="logined" style="display: none">用户名: <a id="dis_Username"></a> 姓名: <a id="dis_Truename"></a> 类型：<A id="dis_Usertype"></A> <A id="userLogout">登出</A></div>
+        </div>
+      </div>
+      <table width="1003" border="0" align="center" cellpadding="0" cellspacing="0" class="search">
+        <tbody>
+          <tr>
+            <td width="30%" height="39"><div class="copyright">Program by</div></td>
+            <td width="20%"><div class="cPrange" align="center">网工1</div></td>
+            <td width="20%"><div class="cPrange" align="center">陈艺锋 魏雪玲 叶伟星</div></td>
+            <td width="30%"><div class="infotext">2018-6</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--登录模块-->
+    <div id="loginDIV">
+      <div class="regtitle">登录</div>
+      <div class="DIVForm">
+        <table width="249" border="0">
+          <tr>
+            <th height="39" scope="col">用户名</th>
+            <th scope="col"> <input name="username" type="text" class="searchinput" id="username" /></th>
+          </tr>
+          <tr>
+            <th height="40" scope="row">密码</th>
+            <td><input name="password" type="password" class="searchinput" id="password"/></td>
+          </tr>
+          <tr>
+            <th height="35" align="left" scope="row"> <input name="userlogin" type="button" class=searchButton id="userLogin" value="登录" /></th>
+            <td align="right"><input type="button" name="closeLoginDIV" id="closeLoginDIV" class=searchButton value="关闭" /></td>
+          </tr>
+        </table>
+      </div>
+      <div class="errtext" id="loginfo"> </div>
+    </div>
+    <!--注册模块-->
+    <div id="regDIV">
+      <div class="regtitle">注册</div>
+      <div class="DIVForm">
+        <table width="332" border="0">
+          <tr>
+            <th height="37" scope="col">用户名：</th>
+            <th align="center" scope="col"><input type="text" id="reg_username" /></th>
+          </tr>
+          <tr>
+            <th height="36" scope="row">密码：</th>
+            <td><input type="password"  id="reg_password" /></td>
+          </tr>
+          <tr>
+            <th height="39" scope="row">真实姓名：</th>
+            <td><input type="text" id="reg_truename" /></td>
+          </tr>
+          <tr>
+            <th height="39" scope="row">身份证号：</th>
+            <td><input type="text" id="reg_idnumber" /></td>
+          </tr>
+          <tr align="center">
+            <th height="35" align="left" scope="row"> <input name="userreg" type="button" class=searchButton id="userReg" value="注册" /></th>
+            <td align="right"><input type="button" name="closeRegDIV" id="closeRegDIV" class=searchButton value="关闭" /></td>
+          </tr>
+        </table>
+      </div>
+      <div class="errtext" id="reginfo"> </div>
+    </div>
+
+    <div id="buyDIV">
+      <div class="regtitle">购买车票</div>
+      <div class="DIVForm">
+        <table width="507" border="0">
+          <tr>
+            <td height="39">车次：</td>
+            <td><div id="buy_TrainNum"></div></td>
+            <td>类型：</td>
+            <td><div id="buy_TrainType"></div></td>
+          </tr>
+          <tr>
+            <td height="39">出发站：</td>
+            <td><div id="buy_StartStation"></div></td>
+            <td>到达站：</td>
+            <td><div id="buy_ArriveStation"></div></td>
+          </tr>
+          <tr>
+            <td height="38">发车时间：</td>
+            <td><div id="buy_StartTime"></div></td>
+            <td>到站时间：</td>
+            <td><div id="buy_ArriveTime"></div></td>
+          </tr>
+          <tr>
+            <td height="43">总里程：</td>
+            <td><div id="buy_Mile"></div></td>
+            <td>票价：</td>
+            <td><div id="buy_Price"></div></td>
+          </tr>
+          <tr>
+            <td height="43">日期：</td>
+            <td><input type="text" id="buyDate" value="2011-1-1"/></td>
+            <td>张数：</td>
+            <td><input type="text" id="buyNumber" value="1"/></td>
+          </tr>
+          <tr>
+            <td height="48" colspan="2" align="left"><input type="button" name="buyNewTicket" id="buyNewTicket" class=searchButton value="购买" /></td>
+            <td colspan="2" align="right"><input type="button" name="closeBuyDIV" id="closeBuyDIV" class=searchButton value="关闭" /></td>
+          </tr>
+        </table>
+      </div>
+      <div class="errtext" id="buyinfo"> </div>
+    </div>
+    <!--首页主体模块-->
+    <div id="page_Home" class="page" align="center"><img src="image/home0.jpg"></div>
+    <!--查询列车模块-->
+    <div id="page_List" class="page">
+      <div class="qn_page">
+        <table>
+          <tr>
+            <td>
+              <div class="search">
+                <div class="hd"></div>
+                <div id="searchForm" class="ct">
+                  <table class="tblSearch" cellSpacing=0 cellPadding=0>
+                    <tbody>
+                      <tr>
+                        <th><span class="t">出发城市</span></th>
+                        <td class="sinputbox"><div class="qcbox qcity">
+                            <div class="boxWrapper">
+                              <div id="mainXI0" class="boxContainer">
+                                <div id="city1" class="sinfo infotext" title="">城市名</div>
+                              </div>
+                            </div>
+                            <input maxLength=10 id="fromCity" autocomplete="off" value="北京">
+                          </div></td>
+                        <th><span class="t">到达城市</span></th>
+                        <td class="sinputbox"><div class="qcbox qcity">
+                            <div class="boxWrapper">
+                              <div id="mainXI1" class="boxContainer">
+                                <div id="city2" class="sinfo infotext" title="">城市名</div>
+                              </div>
+                            </div>
+                            <input maxLength=10 id="toCity" autocomplete="off" value="上海">
+                          </div></td>
+                        <td><span class="sb">
+                          <!--<input id="searchTrain" class=searchButton title="搜索" value="搜索">-->
+                          <input class="searchButton" title="搜索" value="搜索">
+                          </span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class=ft>
+                  <!--<P id="searchResultInfo">以下是搜索到的列车列表：</P>-->
+                  <P>以下是搜索到的列车列表：</P>
+                </div>
+              </div>
+            </td>
+            <td><img src="image/city.jpg" /></td>
+          </tr>
+        </table>
+        <!--<div style="display: none" id=list_loading class=list_loading>-->
+        <div style="display: none" class="list_loading">
+          <div class=top>正在获取数据，请稍等...</div>
+          <!--<div class=flightPriceItem><img alt="" src="m_loading.gif"> </div>-->
+        </div>
+        <!--<div style="display: block" id=list_wrapper class=list_wrapper>-->
+        <div style="display: block" class="list_wrapper">
+          <ul class=header>
+            <li class=c1><b>车次</b></li>
+            <li class=c1><b>类型</b></li>
+            <li class=c2><b>路线</b></li>
+            <li class=c3><b id=sortDeptTime class=sorter>发车时间</b></li>
+            <li class=c3><b id=sortArriTime class=sorter>到站时间</b></li>
+            <li class=c4><b id=sortAllTime class=sorter>运行时间</b></li>
+            <li class=c6><b id=sortAllMile class=sorter>总里程</b></li>
+            <li class=c6><b id=sortPrice class=sorter>总票价</b></li>
+          </ul>
+          <div id=trainList class=list> </div>
+        </div>
+      </div>
+    </div>
+    <!--站点信息模块-->
+    <div id="page_Station" class="page">
+      <div class="qn_page">
+        <table>
+          <tr>
+            <td><div class="search">
+                <div class="hd"> </div>
+                <!--<div id=searchForm class="ct">-->
+                <div class="ct">
+                  <table class=tblSearch cellSpacing=0 cellPadding=0>
+                    <tbody>
+                      <tr>
+                        <th><span class=t>输入车站</span></th>
+                        <td class=sinputbox><div class="qcbox qqc">
+                            <div class=boxWrapper>
+                              <div id=mainXI2 class=boxContainer>
+                                <!--<div id=city2 class="sinfo infotext" title="">车站名</div>-->
+                                <div class="sinfo infotext" title="">车站名</div>
+                              </div>
+                            </div>
+                            <input id="getStation" value=郑州 maxLength=20 name=fromStation autocomplete="off">
+                          </div></td>
+                        <td><span class=sb>
+                          <input id="searchStation" class=searchButton title=搜索 value=搜索>
+                          </span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class=ft>
+                  <!--<p id=searchResultInfo>经过该站点的所有列车列表：</p>-->
+                  <p>经过该站点的所有列车列表：</p>
+                </div>
+              </div></td>
+            <td><img src="image/station.jpg" /></td>
+          </tr>
+        </table>
+        <!--<div style="DISPLAY: none" id=list_loading class=list_loading>-->
+        <div style="DISPLAY: none" class=list_loading>
+          <div class=top>正在获取数据，请稍等...</div>
+          <!--<div class=flightPriceItem><img alt="" src="m_loading.gif"> </div>-->
+        </div>
+        <!--<div style="display: block" id=list_wrapper class=list_wrapper>-->
+        <div style="display: block" class=list_wrapper>
+          <ul class=header>
+            <li class=c1><b>车次</b></li>
+            <li class=c1><b>类型</b></li>
+            <LI class=c2><b>路线</b></LI>
+            <!--<li class=c3><b id=sortDeptTime class=sorter>发车时间</b></li>-->
+            <!--<li class=c3><b id=sortArriTime class=sorter>到站时间</b></li>-->
+            <!--<li class=c4><b id=sortAllTime class=sorter>运行时间</b></li>-->
+            <!--<li class=c6><b id=sortAllMile class=sorter>总里程</b></li>-->
+            <!--<li class=c6><b id=sortPrice class=sorter>总票价</b></li>-->
+            <li class=c3><b class=sorter>发车时间</b></li>
+            <li class=c3><b class=sorter>到站时间</b></li>
+            <li class=c4><b class=sorter>运行时间</b></li>
+            <li class=c6><b class=sorter>总里程</b></li>
+            <li class=c6><b class=sorter>总票价</b></li>
+          </ul>
+          <div id=stationTrainList class=list> </div>
+        </div>
+      </div>
+    </div>
+    <!--车次信息模块-->
+    <div id="page_Train" class="page">
+      <div class="qn_page">
+        <table>
+          <tr>
+            <td><div class="search">
+                <div class="hd"> </div>
+                <!--<div id=searchForm class="ct">-->
+              <div class="ct">
+                  <table class=tblSearch cellSpacing=0 cellPadding=0>
+                    <tbody>
+                      <tr>
+                        <th><span class=t>输入车次</span></th>
+                        <td class=sinputbox><div class="qcbox qqc">
+                            <div class=boxWrapper>
+                              <div id=mainXI3 class=boxContainer>
+                                <div id=sinfoXI3 class="sinfo infotext" title="">如D123</div>
+                              </div>
+                            </div>
+                            <input id="trainNum" maxLength=20 name="" autocomplete="off">
+                          </div></td>
+                        <td><span class=sb>
+                          <input id=searchTrainNum class=searchButton title=搜索 value=搜索>
+                          </span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class=ft>
+                  <!--<P id=searchResultInfo>列车信息：</P>-->
+                  <P>列车信息：</P>
+                </div>
+              </div></td>
+            <td><img src="image/train.jpg" /></td>
+          </tr>
+        </table>
+        <div style="displays: none" id=list_loading class=list_loading>
+          <div class=top>正在获取数据，请稍等...</div>
+          <!--<div class=flightPriceItem><IMG alt="" src="m_loading.gif"> </div>-->
+        </div>
+        <!--<div style="display: block" id=list_wrapper class=list_wrapper>-->
+        <div style="display: block" class=list_wrapper>
+          <ul class=header>
+            <li class=c1><b>车次</b></li>
+            <li class=c1><b>类型</b></li>
+            <li class=c2><b>路线</b></li>
+            <!--<li class=c3><b id=sortDeptTime class=sorter>发车时间</b></li>-->
+            <!--<li class=c3><b id=sortArriTime class=sorter>到站时间</b></li>-->
+            <!--<li class=c4><b id=sortAllTime class=sorter>运行时间</b></li>-->
+            <!--<li class=c6><b id=sortAllMile class=sorter>总里程</b></li>-->
+            <!--<li class=c6><b id=sortPrice class=sorter>总票价</b></li>-->
+            <li class=c3><b class=sorter>发车时间</b></li>
+            <li class=c3><b class=sorter>到站时间</b></li>
+            <li class=c4><b class=sorter>运行时间</b></li>
+            <li class=c6><b class=sorter>总里程</b></li>
+            <li class=c6><b class=sorter>总票价</b></li>
+          </ul>
+          <div id=trainNumList class=list> </div>
+        </div>
+      </div>
+    </div>
+    <!--我的账户模块-->
+    <div id="page_User" class="page">
+      <div class="qn_page">
+        <table>
+          <tr>
+            <td><div class="search">
+                <div class="hd"> </div>
+                <!--<div id=searchForm class="ct">-->
+              <div class="ct">
+                  <table class=tblSearch cellSpacing=0 cellPadding=0>
+                    <tbody>
+                      <tr>
+                        <th><span class=t>用户名</span></th>
+                        <td class=sinputbox><div class="qcbox qcity">
+                            <div class=boxWrapper></div>
+                            <input disabled="disabled" id=user_Name value="" maxLength=10 autocomplete="off">
+                          </div></td>
+                        <th><span class=t>密  码</span></th>
+                        <td class=sinputbox><div class="qcbox qcity">
+                            <div class=boxWrapper></div>
+                            <input maxLength=10 id=user_Pass autocomplete="off" value="">
+                          </div></td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <th><span class=t>真实姓名</span></th>
+                        <td class=sinputbox><div class="qcbox qcity">
+                            <div class=boxWrapper></div>
+                            <input maxLength=10 id=true_Name autocomplete="off" value="">
+                          </div></td>
+                        <th><span class=t>身份证号</span></th>
+                        <td class=sinputbox><div class="qcbox qcity">
+                            <div class=boxWrapper></div>
+                            <input maxLength=20 id=id_Number autocomplete="off" value="">
+                          </div></td>
+                        <td><span class=sb>
+                          <input id=searchTrain class=searchButton title=搜索 value=修改>
+                          </span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class=ft>
+                  <P id=searchResultInfo>用户所有车票：</P>
+                </div>
+              </div></td>
+            <td><img src="image/city.jpg" /></td>
+          </tr>
+        </table>
+        <div style="display: block" id=list_wrapper class=list_wrapper>
+          <ul class=header>
+            <li class=c1><b>车次</b></li>
+            <li class=c1><b>类型</b></li>
+            <li class=c2><b>路线</b></li>
+            <!--<li class=c3><b id=sortDeptTime class=sorter>发车时间</b></li>-->
+            <!--<li class=c3><b id=sortArriTime class=sorter>到站时间</b> </li>-->
+            <!--<li class=c4><b id=sortAllTime class=sorter>购买日期</b> </li>-->
+            <!--<li class=c6><b id=sortAllMile class=sorter>总里程</b> </li>-->
+            <!--<li class=c7><b id=sortPrice class=sorter>座位</b> </li>-->
+            <!--<li class=c8><b id=sortPrice class=sorter>总票价</b> </li>-->
+            <li class=c3><b class=sorter>发车时间</b></li>
+            <li class=c3><b class=sorter>到站时间</b> </li>
+            <li class=c4><b class=sorter>购买日期</b> </li>
+            <li class=c6><b class=sorter>总里程</b> </li>
+            <li class=c7><b class=sorter>座位</b> </li>
+            <li class=c8><b class=sorter>总票价</b> </li>
+          </ul>
+          <div id=ticketList class=list> </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!--系统管理模块-->
+    <div id="page_Manage" class="page">
+      <div class="qn_page">
+        <div class="search">
+          <div class="hd">增加/修改列车</div>
+          <!--<div id=searchForm class="ct">-->
+          <div class="ct">
+            <p>&nbsp;</p>
+            <table width="580" border="0">
+              <tr>
+                <td width="118">列车号</td>
+                <td width="118">列车类型</td>
+                <td width="118">车厢数 </td>
+                <td width="118">每车厢定员数</td>
+                <td width="86">&nbsp;</td>
+              </tr>
+              <tr>
+                <td><input name="trainNum" type="text" class="changeBox" id="modifyTrainNum" /></td>
+                <td><input name="trainNum" type="text" class="changeBox" id="modifyTrainType" /></td>
+                <td><input name="trainNum" type="text" class="changeBox" id="modifyTrainCars" /></td>
+                <td><input name="trainNum" type="text" class="changeBox" id="modifyTrainCarry" /></td>
+                <td><span class="sb">
+                  <input id="searchTrain2" class="searchButton" title="搜索" value="增加/修改" />
+                  </span></td>
+              </tr>
+            </table>
+          </div>
+          <div class=ft></div>
+          <div class="hd">增加/修改站点</div>
+          <!--<div id=searchForm class="ct">-->
+          <div class="ct">
+            <p>&nbsp</p>
+            <table width="463" border="0">
+              <tr>
+                <td width="118">站点名：</td>
+                <td width="118">所在城市：</td>
+                <td width="118">站点介绍：</td>
+                <td width="91">&nbsp;</td>
+              </tr>
+              <tr>
+                <td><input type="text" class="changeBox" id="modifyStation" /></td>
+                <td><input type="text" class="changeBox"  id="modifyStationCity" /></td>
+                <td><input type="text" class="changeBox" id="modifyStationIntro" /></td>
+                <td><span class="sb">
+                  <input id="searchTrain3" class="searchButton" title="搜索" value="增加/修改" />
+                  </span></td>
+              </tr>
+            </table>
+          </div>
+          <div class=ft></div>
+          <div class="hd">增加/修改列车经过站点</div>
+          <!--<div id=searchForm class="ct">-->
+          <div class="ct">
+            <p></p>
+            <table width="575" border="0">
+              <tr>
+                <td width="117">车次</td>
+                <td width="113">站点</td>
+                <td width="123">到达时间</td>
+                <td width="117">开车时间</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><input name="modifyTrainNum" type="text" class="changeBox" id="modifyTrainNum2" /></td>
+                <td><input name="modifyTrainNum2" type="text" class="changeBox" id="modifyTrainNum3" /></td>
+                <td class="changeBox"><input name="modifyTrainNum3" type="text" class="changeBox" id="modifyTrainNum4" /></td>
+                <td class="changeBox"><input name="modifyTrainNum4" type="text" class="changeBox" id="modifyTrainNum5" /></td>
+                <td width="83">&nbsp;</td>
+              </tr>
+              <tr>
+                <td width="117">顺序</td>
+                <td width="113">总时间</td>
+                <td width="123">总路程</td>
+                <td width="117">总票价</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="changeBox"><input name="modifyTrainNum8" type="text" class="changeBox" id="modifyTrainNum9" /></td>
+                <td class="changeBox"><input name="modifyTrainNum7" type="text" class="changeBox" id="modifyTrainNum8" /></td>
+                <td class="changeBox"><input name="modifyTrainNum5" type="text" class="changeBox" id="modifyTrainNum6" /></td>
+                <td class="changeBox"><input name="modifyTrainNum6" type="text" class="changeBox" id="modifyTrainNum7" /></td>
+                <td><input id="searchTrain11" class="searchButton" title="搜索" value="增加/修改" /></td>
+              </tr>
+            </table>
+            <p></p>
+          </div>
+          <div class=ft></div>
+          <div class="hd">增加/去除管理员</div>
+          <!--<div id=searchForm class="ct">用户名：-->
+          <div class="ct">用户名：
+            <input type="text" name="modifyAdmin" id="modifyAdmin" />
+            <input id="searchTrain4" class="searchButton" title="搜索" value="增加" />
+            <input id="searchTrain5" class="searchButton" title="搜索" value="去除" />
+          </div>
+          <div class=ft></div>
+          <div class="hd">删除</div>
+          <!--<div id=searchForm class="ct">-->
+          <div class="ct">
+            <p></p>
+            <table width="473" border="0">
+              <tr>
+                <td width="108" height="39">删除列车</td>
+                <td width="201">[车　次]
+                  <input name="modifyAdmin2" type="text" class="changeBox" id="delTrainNum" /></td>
+                <td width="150"><span class="sb">
+                  <input id="searchTrain6" class="searchButton" title="搜索" value="删除" />
+                  </span></td>
+              </tr>
+              <tr>
+                <td height="39">删除用户</td>
+                <td>[用户名]
+                  <input name="modifyAdmin3" type="text" class="changeBox" id="delUserid" /></td>
+                <td><span class="sb">
+                  <input id="searchTrain7" class="searchButton" title="搜索" value="删除" />
+                  </span></td>
+              </tr>
+              <tr>
+                <td height="42">删除站点</td>
+                <td>[站点名]
+                  <input name="modifyAdmin4" type="text" class="changeBox" id="delStation" /></td>
+                <td><span class="sb">
+                  <input id="searchTrain8" class="searchButton" title="搜索" value="删除" />
+                  </span></td>
+              </tr>
+              <tr>
+                <td>删除列车经过站点</td>
+                <td><p>[车　次]
+                    <input name="modifyAdmin5" type="text" class="changeBox" id="delThroughTrain" />
+                  </p>
+                  <p> [站点名]
+                    <input name="delThrough" type="text" class="changeBox" id="delThroughStation" />
+                </p></td>
+                <td><span class="sb">
+                  <input id="searchTrain9" class="searchButton" title="搜索" value="删除" />
+                  </span></td>
+              </tr>
+            </table>
+            <p></p>
+          </div>
+          <div class=ft></div>
+          <div class="hd">执行SQL语句</div>
+          <!--<div id=searchForm class="ct">SQL语句：-->
+          <div class="ct">SQL语句：
+            <input type="text" name="sqlStatement" id="sqlStatement" />
+            <input id="searchTrain10" class="searchButton" title="搜索" value="发送" />
+          </div>
+          <div class=ft></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
