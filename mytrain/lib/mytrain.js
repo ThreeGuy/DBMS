@@ -1,4 +1,4 @@
-//program by yueyuan 2010.12.15
+//program  2018.06
 
 var datapage = "http://localhost/mytrain/traindata.php?"
 
@@ -62,7 +62,7 @@ $(document).ready(function(){
 	$("#page_Home").fadeIn(ani_speed);
 	now_page = "Home";
  	
-	//����������л�ҳ��
+	//
 	$(".nav_li").click(function(){
 		show_page = $(this).attr("page");
 		if(show_page == "User"){
