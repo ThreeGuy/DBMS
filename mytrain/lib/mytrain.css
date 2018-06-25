@@ -1509,10 +1509,8 @@ DIV.qbc_fin {
 }
 #loginDIV {
 	position:absolute;
-	/*left:530px;*/
-	/*top:200px;*/
-	left:10px;
-	top:60px;
+	left:530px;
+	top:200px;
 	width:287px;
 	height:197px;
 	z-index:1003;
@@ -1522,10 +1520,8 @@ DIV.qbc_fin {
 }
 #regDIV {
 	position:absolute;
-	/*left:510px;*/
-	/*top:200px;*/
-	left:10px;
-	top:60px;
+	left:510px;
+	top:200px;
 	width:360px;
 	height:247px;
 	z-index:1004;
@@ -1534,10 +1530,8 @@ DIV.qbc_fin {
 }
 #buyDIV {
 	position:absolute;
-	/*left:403px;*/
-	/*top:178px;*/
-	left:10px;
-	top:60px;
+	left:403px;
+	top:178px;
 	width:534px;
 	height:174px;
 	z-index:1004;
