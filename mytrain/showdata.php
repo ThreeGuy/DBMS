@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <?php
-	//Program by yueyuan 2010.12.21
+	//Program at 2018.6
 	//显示列车信息头部
 	function TrainHead($sdata,$edata){
 		

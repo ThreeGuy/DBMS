@@ -1,5 +1,5 @@
 <?php
-	//Program by yueyuan 2010.12.20
+	//Program at 2018.6
 	header('Content-Type:text/html;charset=GB2312');
 	require("showdata.php");
 	
