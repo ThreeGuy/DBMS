@@ -97,10 +97,16 @@ $(document).ready(function(){
 		else
 		{
 			if(show_page == "Manage"){
-				$("#page_" + now_page).fadeOut(ani_speed,function(){
-					$("#page_" + show_page).fadeIn(ani_speed);
-					now_page = show_page;
-				});
+				if(now_Usertype == "1"){
+					$("#page_" + now_page).fadeOut(ani_speed,function(){
+						$("#page_" + show_page).fadeIn(ani_speed);
+						now_page = show_page;
+					});
+				}
+				else
+				{
+					alert("只有管理员才能进行系统管理");
+				}
 			}
 			else
 			{
