@@ -802,6 +802,7 @@ A:hover {
 	DISPLAY: block;
 	HEIGHT: 21px;
 }
+/*≤È—Ø∞¥≈•*/
 .searchButton {
 	Z-INDEX: 3;
 	POSITION: relative;
@@ -810,12 +811,14 @@ A:hover {
 	OUTLINE-STYLE: none;
 	WIDTH: 80px;
 	DISPLAY: block;
-	FONT: 12px/22px simsun;
+	/*FONT: 12px/22px simsun;*/
+	FONT: 12px;
 	/*BACKGROUND: url(../image/btn.png) no-repeat 0 0;*/
 	FLOAT: none;
 	BORDER-TOP-WIDTH: 0;
 	BORDER-BOTTOM-WIDTH: 0;
-	HEIGHT: 22px;
+	/*HEIGHT: 22px;*/
+	HEIGHT: 24px;
 	COLOR: #fff;
 	BORDER-LEFT-WIDTH: 0;
 	CURSOR: pointer;
@@ -1515,6 +1518,7 @@ DIV.qbc_fin {
 	height:197px;
 	z-index:1003;
 	border: 1px solid #cfd8e1;
+	background-color: #FFFFFF;
 	font-size: 10px;
 	display:none;
 }
@@ -1524,8 +1528,9 @@ DIV.qbc_fin {
 	top:200px;
 	width:360px;
 	height:247px;
-	z-index:1004;
+	z-index:1003;
 	border: 1px solid #cfd8e1;
+	background-color: #FFFFFF;
 	display:none;
 }
 #buyDIV {
@@ -1536,5 +1541,6 @@ DIV.qbc_fin {
 	height:174px;
 	z-index:1004;
 	border: 1px solid #cfd8e1;
+	background-color: #FFFFFF;
 	display:none;
 }
