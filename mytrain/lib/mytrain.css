@@ -105,13 +105,14 @@ a:link {
 /*.store_head .nav .MainMenu_ul .line { width:2px; height:54px; background:url('../image/store_navbg.gif') no-repeat 0 -108px; padding:0px;}*/
 /*µÇÂ¼×¢²á°å¿é*/
 .store_head .header .store_affiliate_menu {
-	width:243px;
+	width:343px;
 	height:22px;
 	position:absolute;
 	right:60px;
 	top:-22px;
 	text-align:center;
 	color:#eeeeee;
+	/*background-color: #eeeeee;*/
 	/*background:url('../image/store_affiliate_navbg.png') no-repeat center bottom;*/
 	word-spacing:10px;
 	line-height:22px;
