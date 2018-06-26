@@ -80,18 +80,6 @@ a:link {
 	top:3px;
 	left: 0;
 }
-/*.store_head .flower {*/
-	/*width:149px;*/
-	/*height:126px;*/
-	/*position:absolute;*/
-	/*left:0px;*/
-	/*top:0px;*/
-	/*z-index:1;*/
-	/*background-image: url('../image/flower.png')!important;!* FF IE7 *!*/
-	/*background-repeat: no-repeat;*/
-	/*_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../image/flower.png'); !* IE6 *!*/
-	/*_ background-image: none;*/
-/*}*/
 .store_head .header {
 	position:relative;
 	width:100%;
